@@ -54,11 +54,13 @@ class GaussianFunction : public FiniteFunction{
     GaussianFunction(); //Copying the constructors and destructors from the base class
     GaussianFunction(double range_min, double range_max, double mu, double sigma,std::string outfile); 
     ~GaussianFunction(); 
-    double callFunction(double x) override; //overriding just this function
+    double callFunction(double x) override; //overriding this function
     double mu(); 
     double sigma(); 
     void setmu(double mu);
     void setsigma(double sigma);
+    void printInfo() override; //Dump parameter info about the current function (Overridable)
+
 
   protected:
     double m_mu;
@@ -78,6 +80,8 @@ class CauchyLorentzFunction : public FiniteFunction{
     double gamma(); 
     void setxo(double xo);
     void setgamma(double gamma);
+    void printInfo() override; //Dump parameter info about the current function (Overridable)
+
 
   protected:
     double m_xo;
@@ -101,6 +105,8 @@ class CrystalBallFunction : public FiniteFunction{
     void setxbar(double xbar);
     void setn(double n);
     void setsigma(double sigma);
+    void printInfo() override; //Dump parameter info about the current function (Overridable)
+
 
   protected:
     double m_xbar;

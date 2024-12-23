@@ -287,6 +287,16 @@ double GaussianFunction::gaussian(double x) {
   };
 double GaussianFunction::callFunction(double x) {return this->gaussian(x);}; //(overridden)
 
+//Print (overridden)
+void GaussianFunction::printInfo(){
+  std::cout << "rangeMin: " << m_RMin << std::endl;
+  std::cout << "rangeMax: " << m_RMax << std::endl;
+  std::cout << "mu: " << m_mu << std::endl;
+  std::cout << "sigma: " << m_sigma << std::endl;
+  std::cout << "integral: " << m_Integral << ", calculated using " << m_IntDiv << " divisions" << std::endl;
+  std::cout << "function:  Gaussian" << std::endl;
+}
+
 //Empty constructor
 CauchyLorentzFunction::CauchyLorentzFunction(){
   m_RMin = -5.0;
@@ -330,6 +340,15 @@ double CauchyLorentzFunction::cauchylorentz(double x) {
   };
 double CauchyLorentzFunction::callFunction(double x) {return this->cauchylorentz(x);}; //(overridden)
 
+//Print (overridden)
+void CauchyLorentzFunction::printInfo(){
+  std::cout << "rangeMin: " << m_RMin << std::endl;
+  std::cout << "rangeMax: " << m_RMax << std::endl;
+  std::cout << "x_0: " << m_xo << std::endl;
+  std::cout << "gamma: " << m_gamma << std::endl;
+  std::cout << "integral: " << m_Integral << ", calculated using " << m_IntDiv << " divisions" << std::endl;
+  std::cout << "function:  Cauchy-Lorentz" << std::endl;
+}
 
 
 
@@ -392,3 +411,15 @@ double CrystalBallFunction::crystalball(double x) {
 
 double CrystalBallFunction::callFunction(double x) {return this->crystalball(x);}; //(overridden)
 
+//Print (overridden)
+void CrystalBallFunction::printInfo(){
+  std::cout << "rangeMin: " << m_RMin << std::endl;
+  std::cout << "rangeMax: " << m_RMax << std::endl;
+  std::cout << "alpha: " << m_alpha << std::endl;
+  std::cout << "xbar: " << m_xbar << std::endl;
+  std::cout << "sigma: " << m_sigma << std::endl;
+  std::cout << "n: " << m_n << std::endl;
+
+  std::cout << "integral: " << m_Integral << ", calculated using " << m_IntDiv << " divisions" << std::endl;
+  std::cout << "function:  Cauchy-Lorentz" << std::endl;
+}

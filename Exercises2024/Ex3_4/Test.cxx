@@ -48,20 +48,24 @@ int main(){
     FiniteFunction func( -10, 10, "Outputs/invxsquared");
     func.plotData(X, 50, true);
     func.plotFunction();
+    func.printInfo();
 
 
     GaussianFunction Func( -10,  10,2,1.8, "Outputs/normal");
     Func.plotData(X, 50, true);
     Func.plotFunction();
+    Func.printInfo();
 
     CauchyLorentzFunction FUNC( -10,  10,2,1.8, "Outputs/Cauchy-Lorentz");
     FUNC.plotData(X, 50, true);
     FUNC.plotFunction();
+    FUNC.printInfo();
 
     //double alpha, double xbar, double n, double sigma,
     CrystalBallFunction funC( -10, 10,1.2,2,1.2,1.5, "Outputs/Crystal Ball");
     funC.plotData(X, 50, true);
     funC.plotFunction();
+    funC.printInfo();
 
     return 0;
 }
