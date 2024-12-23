@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <cmath>
 #include "gnuplot-iostream.h"
 
 #pragma once //Replacement for IFNDEF
@@ -47,3 +48,67 @@ protected:
 private:
   double invxsquared(double x); //The default functional form
 };
+
+class GaussianFunction : public FiniteFunction{
+  public:
+    GaussianFunction(); //Copying the constructors and destructors from the base class
+    GaussianFunction(double range_min, double range_max, double mu, double sigma,std::string outfile); 
+    ~GaussianFunction(); 
+    double callFunction(double x) override; //overriding just this function
+    double mu(); 
+    double sigma(); 
+    void setmu(double mu);
+    void setsigma(double sigma);
+
+  protected:
+    double m_mu;
+    double m_sigma;
+
+  private:
+    double gaussian(double x);
+};
+
+class CauchyLorentzFunction : public FiniteFunction{
+  public:
+    CauchyLorentzFunction(); //Copying the constructors and destructors from the base class
+    CauchyLorentzFunction(double range_min, double range_max, double xo, double gamma,std::string outfile); 
+    ~CauchyLorentzFunction(); 
+    double callFunction(double x) override; //overriding just this function
+    double xo(); 
+    double gamma(); 
+    void setxo(double xo);
+    void setgamma(double gamma);
+
+  protected:
+    double m_xo;
+    double m_gamma;
+
+  private:
+    double cauchylorentz(double x);
+};
+
+class CrystalBallFunction : public FiniteFunction{
+  public:
+    CrystalBallFunction(); //Copying the constructors and destructors from the base class
+    CrystalBallFunction(double range_min, double range_max, double alpha, double xbar, double n, double sigma,std::string outfile); 
+    ~CrystalBallFunction(); 
+    double callFunction(double x) override; //overriding just this function
+    double alpha(); 
+    double xbar(); 
+    double n();
+    double sigma();
+    void setalpha(double alpha);
+    void setxbar(double xbar);
+    void setn(double n);
+    void setsigma(double sigma);
+
+  protected:
+    double m_xbar;
+    double m_sigma;
+    double m_alpha;
+    double m_n;
+
+  private:
+    double crystalball(double x);
+};
+
