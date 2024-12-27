@@ -425,6 +425,12 @@ void CrystalBallFunction::printInfo(){
   std::cout << "function:  Crystal Ball" << std::endl;
 }
 
+
+//Function that returns randomly sampled data points from a distribution.
+//The function is defined as a public method of the base class FiniteFunctions, which is then inherited by the 
+//derived classes. Each derived class has its own distribution defined, which is used when the function
+//callFunction is overridden which allows multiple different distributions to be sampled from without repeating
+//any code!
 std::vector<double> FiniteFunction::Metropolis(int N_Samples){
 	std::vector<double> samples;
   std::mt19937 RandGen(42);

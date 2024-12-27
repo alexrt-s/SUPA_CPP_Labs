@@ -40,39 +40,9 @@ int main(){
     }
     std::cout << X.size() << std::endl;
 
-/*
-    FiniteFunction func( -10, 10, "Outputs/invxsquared");
-    std::vector<double> Sampled_data = func.Metropolis(10000);
-    func.plotData(Sampled_data,50, false);
-    func.plotData(X, 50, true);
-    func.plotFunction();
-    func.printInfo();
-
-
-    GaussianFunction Func( -10,  10,2,1.8, "Outputs/normal");
-    std::vector<double> sampled_data = Func.Metropolis(1000);
-    Func.plotData(sampled_data,50, false);
-    Func.plotData(X, 50, true);
-    Func.plotFunction();
-    Func.printInfo();
-
-    CauchyLorentzFunction FUNC( -10,  10,2,1.8, "Outputs/Cauchy-Lorentz");
-    FUNC.plotData(X, 50, true);
-    std::vector<double> sampled_Data = FUNC.Metropolis(1000);
-    FUNC.plotData(sampled_Data,50, false);
-    FUNC.plotFunction();
-    FUNC.printInfo();
-
-    
-
-    //double alpha, double xbar, double n, double sigma,
-    CrystalBallFunction funC( -10, 10,1.2,2,1.2,1.5, "Outputs/Crystal Ball");
-    funC.plotData(X, 50, true);
-    std::vector<double> Sampled_Data = funC.Metropolis(1000);
-    funC.plotData(Sampled_Data,50, false);
-    funC.plotFunction();
-    funC.printInfo();
-    */
+    //Creating instances of each derived class and then calling the methods to plot the data previously read in, 
+    //then using my metroplolis function to sample data and plotting this along with the function that the data is 
+    //sampled from. Finally, the method to print info about the function to the terminal is called.
 
     FiniteFunction IN( -10, 10, "Outputs/invxsquared");
     IN.plotData(X, 50, true);
