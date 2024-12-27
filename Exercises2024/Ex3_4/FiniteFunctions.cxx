@@ -428,11 +428,11 @@ void CrystalBallFunction::printInfo(){
 std::vector<double> FiniteFunction::Metropolis(int N_Samples){
 	std::vector<double> samples;
   std::mt19937 RandGen(42);
-	std::uniform_real_distribution<float> UniformPDF{m_RMin,m_RMax};
-	float Rand_X = UniformPDF(RandGen);
+	std::uniform_real_distribution<double> UniformPDF{m_RMin,m_RMax};
+	double Rand_X = UniformPDF(RandGen);
   for (int i = 0; i < N_Samples;){
-    std::normal_distribution<float> NormalPDF{Rand_X,1};
-    float Rand_Y = NormalPDF(RandGen);
+    std::normal_distribution<double> NormalPDF{Rand_X,1};
+    double Rand_Y = NormalPDF(RandGen);
     double A;
     if (this->callFunction(Rand_Y)/this->callFunction(Rand_X) - 1 > 0){ //using the overloaded function callFunction so it will call the right distribution for each derived class :3
       A = 1;
@@ -440,13 +440,12 @@ std::vector<double> FiniteFunction::Metropolis(int N_Samples){
     else{
       A = this->callFunction(Rand_Y)/this->callFunction(Rand_X);
     }
-    std::uniform_real_distribution<float> T_PDF{0,1};
+    std::uniform_real_distribution<double> T_PDF{0,1};
     double T = T_PDF(RandGen);
     if (T < A){
       Rand_X = Rand_Y;
       i += 1;
       samples.push_back(Rand_Y);
-
     }
   }
   std::cout << "Produced " << samples.size() << " Randomly Generated Data Points" << std::endl;
