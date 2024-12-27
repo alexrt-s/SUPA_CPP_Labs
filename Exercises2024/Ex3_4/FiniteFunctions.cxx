@@ -4,6 +4,7 @@
 #include <cmath>
 #include "FiniteFunctions.h"
 #include <filesystem> //To check extensions in a nice way
+#include <random>
 
 #include "gnuplot-iostream.h" //Needed to produce plots (not part of the course) 
 
@@ -421,5 +422,33 @@ void CrystalBallFunction::printInfo(){
   std::cout << "n: " << m_n << std::endl;
 
   std::cout << "integral: " << m_Integral << ", calculated using " << m_IntDiv << " divisions" << std::endl;
-  std::cout << "function:  Cauchy-Lorentz" << std::endl;
+  std::cout << "function:  Crystal Ball" << std::endl;
+}
+
+std::vector<double> FiniteFunction::Metropolis(int N_Samples){
+	std::vector<double> samples;
+  std::mt19937 RandGen(42);
+	std::uniform_real_distribution<float> UniformPDF{m_RMin,m_RMax};
+	float Rand_X = UniformPDF(RandGen);
+  for (int i = 0; i < N_Samples;){
+    std::normal_distribution<float> NormalPDF{Rand_X,1};
+    float Rand_Y = NormalPDF(RandGen);
+    double A;
+    if (this->callFunction(Rand_Y)/this->callFunction(Rand_X) - 1 > 0){ //using the overloaded function callFunction so it will call the right distribution for each derived class :3
+      A = 1;
+    }
+    else{
+      A = this->callFunction(Rand_Y)/this->callFunction(Rand_X);
+    }
+    std::uniform_real_distribution<float> T_PDF{0,1};
+    double T = T_PDF(RandGen);
+    if (T < A){
+      Rand_X = Rand_Y;
+      i += 1;
+      samples.push_back(Rand_Y);
+
+    }
+  }
+  std::cout << "Produced " << samples.size() << " Randomly Generated Data Points" << std::endl;
+  return samples;
 }

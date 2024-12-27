@@ -2,6 +2,7 @@
 #include <vector>
 #include <cmath>
 #include "gnuplot-iostream.h"
+#include<random>
 
 #pragma once //Replacement for IFNDEF
 
@@ -24,6 +25,8 @@ public:
   void plotData(std::vector<double> &points, int NBins, bool isdata=true); //NB! use isdata flag to pick between data and sampled distributions
   virtual void printInfo(); //Dump parameter info about the current function (Overridable)
   virtual double callFunction(double x); //Call the function with value x (Overridable)
+
+  std::vector<double> Metropolis(int N_Samples); //Part 2: sampling function
 
   //Protected members can be accessed by child classes but not users
 protected:

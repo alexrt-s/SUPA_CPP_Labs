@@ -39,12 +39,8 @@ int main(){
 
     }
     std::cout << X.size() << std::endl;
-/*
-    for (int i = 0; i < X.size();i++){
-        std::cout << X[i] << std::endl;
-    }
-*/
 
+/*
     FiniteFunction func( -10, 10, "Outputs/invxsquared");
     func.plotData(X, 50, true);
     func.plotFunction();
@@ -60,12 +56,17 @@ int main(){
     FUNC.plotData(X, 50, true);
     FUNC.plotFunction();
     FUNC.printInfo();
-
+*/
     //double alpha, double xbar, double n, double sigma,
     CrystalBallFunction funC( -10, 10,1.2,2,1.2,1.5, "Outputs/Crystal Ball");
     funC.plotData(X, 50, true);
+    std::vector<double> Sampled_Data = funC.Metropolis(10000);
+    funC.plotData(Sampled_Data,50, false);
     funC.plotFunction();
     funC.printInfo();
+
+
+    
 
     return 0;
 }
